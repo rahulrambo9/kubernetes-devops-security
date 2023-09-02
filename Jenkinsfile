@@ -18,5 +18,15 @@ pipeline {
                  }
              }     
         }
+
+      stage('Docker build and push') {
+            steps {
+              withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+                sh 'printenv'
+                sh 'docker build -t rahulrambo9/numeric-app-devsecop:""$GIT_COMMIT"" .'
+                sh 'docker push rahulrambo9/numeric-app-devsecop:""$GIT_COMMIT""'
+              }  
+            }
+        }  
     }
 }  
