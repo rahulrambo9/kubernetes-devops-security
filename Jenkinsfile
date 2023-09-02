@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   stages {
       stage('Build Artifact') {
             steps {
@@ -11,14 +10,13 @@ pipeline {
       stage('Unit Tests - JUnit and Jacoco') {
             steps {
               sh "mvn test"
-               post {
+            } 
+              post {
                 always {
                    junit 'target/surefire-reports/*.xml'
                    jacoco execPattern: 'target/jacoco.exec'
                  }
              }     
         }
-   }
- }
-
-}
+    }
+}  
