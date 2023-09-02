@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-JENKINS_URL='http://localhost:8080'
+JENKINS_URL='http://devsecops-k8.eastus.cloudapp.azure.com:8080'
 
 JENKINS_CRUMB=$(curl -s --cookie-jar /tmp/cookies -u admin:admin ${JENKINS_URL}/crumbIssuer/api/json | jq .crumb -r)
 
